@@ -1,0 +1,476 @@
+/* src/App.css */
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+
+@theme {
+  --color-primary: #d4af37;
+  --color-primary-light: #f0d673;
+  --color-primary-dark: #b8941e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+  }
+}
+
+@layer components {
+  .btn-gold {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-gold:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.5);
+  }
+  
+  .btn-dark {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-dark:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #e2e8f0;
+    letter-spacing: -0.02em;
+  }
+  
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 3rem;
+    }
+  }
+  
+  .card-hover {
+    transition: all 0.3s;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px -12px rgb(212 175 55 / 0.2);
+  }
+
+  /* Navbar styles */
+  .navbar-blur {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .navbar-shadow {
+    box-shadow: 0 4px 6px -1px rgb(212 175 55 / 0.1), 0 2px 4px -1px rgb(212 175 55 / 0.06);
+  }
+
+  /* Smooth animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgb(212 175 55 / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgb(212 175 55 / 0.6);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .animate-fadeInDown {
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 0.8s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.1),
+      transparent
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  /* Stagger animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgb(212 175 55 / 0.5);
+  }
+
+  /* Override indigo with gold */
+  .bg-indigo-500 {
+    background-color: var(--color-primary) !important;
+  }
+
+  .border-indigo-400\/50 {
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+
+  .bg-indigo-400 {
+    background-color: var(--color-primary);
+  }
+
+  .bg-indigo-500\/10 {
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+}
+
+/* Light mode styles */
+body.light-mode,
+.light-mode {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  color: rgb(15 23 42) !important;
+}
+
+body.light-mode *,
+.light-mode * {
+  color: inherit;
+}
+
+body.light-mode nav,
+.light-mode nav {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+body.light-mode .text-slate-300,
+.light-mode .text-slate-300 {
+  color: rgb(51 65 85) !important;
+}
+
+body.light-mode .text-slate-300:hover,
+.light-mode .text-slate-300:hover {
+  color: rgb(15 23 42) !important;
+}
+
+body.light-mode .text-white,
+.light-mode .text-white {
+  color: rgb(15 23 42) !important;
+}
+
+body.light-mode .bg-slate-900\/80,
+.light-mode .bg-slate-900\/80 {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+body.light-mode .bg-slate-800\/50,
+.light-mode .bg-slate-800\/50 {
+  background: rgba(241, 245, 249, 1) !important;
+}
+
+body.light-mode .text-slate-400,
+.light-mode .text-slate-400 {
+  color: rgb(100 116 139) !important;
+}
+
+body.light-mode .border-slate-700,
+.light-mode .border-slate-700 {
+  border-color: rgb(226 232 240) !important;
+}
+
+body.light-mode .btn-gold,
+.light-mode .btn-gold {
+  background: var(--color-primary);
+  color: white;
+}
+
+body.light-mode .btn-gold:hover,
+.light-mode .btn-gold:hover {
+  background: var(--color-primary-dark);
+}
+
+body.light-mode .btn-dark,
+.light-mode .btn-dark {
+  background: rgba(15, 23, 42, 0.05);
+  color: rgb(15 23 42);
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+body.light-mode .btn-dark:hover,
+.light-mode .btn-dark:hover {
+  background: rgba(15, 23, 42, 0.1);
+  border-color: rgba(15, 23, 42, 0.3);
+}
+
+body.light-mode section,
+.light-mode section {
+  color: rgb(15 23 42) !important;
+}
+
+body.light-mode #home,
+.light-mode #home {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+body.light-mode .bg-gradient-to-br,
+.light-mode .bg-gradient-to-br {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+body.light-mode .bg-indigo-500\/10,
+.light-mode .bg-indigo-500\/10 {
+  background: rgba(212, 175, 55, 0.08) !important;
+}
+
+body.light-mode h1,
+.light-mode h1 {
+  color: rgb(15 23 42) !important;
+}
+
+body.light-mode p.text-slate-300,
+.light-mode p.text-slate-300 {
+  color: rgb(71 85 105) !important;
+}
+
+body.light-mode .border-indigo-400\/50,
+.light-mode .border-indigo-400\/50 {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+body.light-mode .bg-indigo-400,
+.light-mode .bg-indigo-400 {
+  background: var(--color-primary) !important;
+}
+
+body.light-mode .bg-indigo-500,
+.light-mode .bg-indigo-500 {
+  background: var(--color-primary) !important;
+}
+
+body.light-mode .text-gold-400,
+.light-mode .text-gold-400 {
+  color: var(--color-primary-dark) !important;
+}
+
+body.light-mode .text-gold-200,
+.light-mode .text-gold-200 {
+  color: rgb(71 85 105) !important;
+}
+
+body.light-mode .bg-black\/50,
+.light-mode .bg-black\/50 {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+body.light-mode .bg-gradient-to-b,
+.light-mode .bg-gradient-to-b {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%) !important;
+}
+
+body.light-mode .border-gold-400\/30,
+body.light-mode .border-gold-400\/20,
+.light-mode .border-gold-400\/30,
+.light-mode .border-gold-400\/20 {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+body.light-mode .border-gold-400\/50,
+.light-mode .border-gold-400\/50 {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+}
+
+body.light-mode input,
+body.light-mode textarea,
+body.light-mode select,
+.light-mode input,
+.light-mode textarea,
+.light-mode select {
+  background: white !important;
+  color: rgb(15 23 42) !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder,
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+  color: rgb(148 163 184) !important;
+}
+
+body.light-mode .placeholder-gold-400\/50::placeholder,
+body.light-mode .placeholder-slate-500::placeholder,
+.light-mode .placeholder-gold-400\/50::placeholder,
+.light-mode .placeholder-slate-500::placeholder {
+  color: rgb(148 163 184) !important;
+}
+
+body.light-mode footer,
+.light-mode footer {
+  background: white !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Contact form specific styles */
+body.light-mode #contact,
+.light-mode #contact {
+  background: #f8fafc !important;
+}
+
+body.light-mode .bg-slate-800,
+.light-mode .bg-slate-800 {
+  background: #f8fafc !important;
+}
+
+body.light-mode label,
+.light-mode label {
+  color: var(--color-primary-dark) !important;
+}
+
+body.light-mode option,
+.light-mode option {
+  background: white !important;
+  color: rgb(15 23 42) !important;
+}

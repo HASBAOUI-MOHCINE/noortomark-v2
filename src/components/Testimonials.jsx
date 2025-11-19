@@ -12,7 +12,7 @@ const Testimonials = () => {
   const t = (key) => translations[language][key] || key;
 
   return (
-    <section id="testimonials" className="py-20 md:py-24" style={isDark ? {background: 'linear-gradient(to bottom, #342d24, #11110e)'} : {}}>
+    <section id="testimonials" className="py-20 md:py-24" style={{background: 'var(--noor-900)'}}>
       <div className="container mx-auto px-6 lg:px-8">
         <h2 className="section-title text-white text-4xl sm:text-5xl md:text-6xl mb-12">
           {t('testimonials-title')}

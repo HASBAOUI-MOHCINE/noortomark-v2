@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../hooks/useTheme.js';
 import { translations } from '../data/translations.js';
 import { FaSun, FaMoon, FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
+import logo from '../logo/logo.jpeg';
 
 const Navbar = () => {
   const { language, setLanguage } = useLanguage();
@@ -56,9 +57,11 @@ const Navbar = () => {
             className="flex items-center space-x-2 group shrink-0"
             onClick={() => setIsMenuOpen(false)}
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-lg" style={{background: 'linear-gradient(to bottom right, #bd915a, #7d5a34)', boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.25)'}}>
-              <span className="font-bold text-sm sm:text-base" style={{color: '#11110e'}}>N</span>
-            </div>
+            <img
+              src={logo}
+              alt="Noortomark logo"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg shadow-lg object-cover"
+            />
             <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-white to-stone-200 bg-clip-text text-transparent transition-all duration-300" style={{background: 'linear-gradient(to right, #ffffff, #e2e8f0)', backgroundClip: 'text'}}>
               Noortomark
             </span>

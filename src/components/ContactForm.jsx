@@ -57,7 +57,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
   };
 
   return (
-    <section id="contact" className="py-20 md:py-24 bg-stone-800">
+    <section id="contact" className="py-20 md:py-24" style={{background: 'var(--noor-900)'}}>
       <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
         <h2 className="section-title text-white text-4xl sm:text-5xl md:text-6xl mb-12">
           {t('request-service')}

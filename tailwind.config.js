@@ -9,7 +9,7 @@
 }
 
 .btn-gold {
-  @apply bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 rounded-lg font-semibold shadow-lg hover:shadow-amber-500/25 transition-all duration-300;
+  @apply bg-gradient-to-r from-stone-400 to-stone-600 text-stone-900 rounded-lg font-semibold shadow-lg hover:shadow-stone-500/25 transition-all duration-300;
 }
 
 .btn-dark {

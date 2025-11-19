@@ -9,9 +9,9 @@
 }
 
 .btn-gold {
-  @apply bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 rounded-lg font-semibold shadow-lg hover:shadow-amber-500/25 transition-all duration-300;
+  @apply bg-gradient-to-r from-amber-400 to-amber-600 text-stone-900 rounded-lg font-semibold shadow-lg hover:shadow-amber-500/25 transition-all duration-300;
 }
 
 .btn-dark {
-  @apply bg-slate-700/80 text-white border border-slate-600 rounded-lg font-semibold backdrop-blur-sm hover:bg-slate-600/80 transition-all duration-300;
+  @apply bg-stone-700/80 text-white border border-stone-600 rounded-lg font-semibold backdrop-blur-sm hover:bg-stone-600/80 transition-all duration-300;
 }

@@ -45,9 +45,9 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl shadow-slate-900/50 border-b border-slate-800/50' 
+        ? 'backdrop-blur-xl shadow-2xl border-b' 
         : 'bg-transparent'
-    }`}>
+    }`} style={scrolled ? {backgroundColor: 'rgba(17, 17, 14, 0.95)', boxShadow: '0 25px 50px -12px rgba(17, 17, 14, 0.5)', borderColor: 'rgba(52, 45, 36, 0.5)'} : {}}>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo amélioré */}
@@ -56,29 +56,36 @@ const Navbar = () => {
             className="flex items-center space-x-2 group shrink-0"
             onClick={() => setIsMenuOpen(false)}
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center shadow-lg shadow-amber-500/25">
-              <span className="text-slate-900 font-bold text-sm sm:text-base">N</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-lg" style={{background: 'linear-gradient(to bottom right, #bd915a, #7d5a34)', boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.25)'}}>
+              <span className="font-bold text-sm sm:text-base" style={{color: '#11110e'}}>N</span>
             </div>
-            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent group-hover:from-amber-400 group-hover:to-amber-600 transition-all duration-300">
+            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-white to-stone-200 bg-clip-text text-transparent transition-all duration-300" style={{background: 'linear-gradient(to right, #ffffff, #e2e8f0)', backgroundClip: 'text'}}>
               Noortomark
             </span>
           </a>
 
           {/* Desktop Navigation amélioré */}
-          <div className="hidden md:flex items-center space-x-1 bg-slate-800/50 backdrop-blur-sm rounded-2xl p-1 border border-slate-700/50">
+          <div className="hidden md:flex items-center space-x-1 backdrop-blur-sm rounded-2xl p-1" style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', border: '1px solid rgba(124, 108, 91, 0.5)'}}>
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
                   activeSection === item.label.replace('#', '')
-                    ? 'text-white bg-gradient-to-r from-amber-400/20 to-amber-600/20 border border-amber-400/30 shadow-lg shadow-amber-500/10'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                    ? 'text-white border shadow-lg'
+                    : 'text-stone-300 hover:text-white'
                 }`}
+                style={activeSection === item.label.replace('#', '') ? {
+                  background: 'linear-gradient(to right, rgba(189, 145, 90, 0.2), rgba(125, 90, 52, 0.2))',
+                  borderColor: 'rgba(189, 145, 90, 0.3)',
+                  boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.1)'
+                } : {}}
+                onMouseEnter={(e) => !activeSection === item.label.replace('#', '') && (e.target.style.backgroundColor = 'rgba(124, 108, 91, 0.5)')}
+                onMouseLeave={(e) => !activeSection === item.label.replace('#', '') && (e.target.style.backgroundColor = 'transparent')}
               >
                 {t(item.label)}
                 {activeSection === item.label.replace('#', '') && (
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-amber-400 rounded-full"></div>
+                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full" style={{backgroundColor: '#bd915a'}}></div>
                 )}
               </a>
             ))}
@@ -87,18 +94,24 @@ const Navbar = () => {
           {/* Controls améliorés */}
           <div className="hidden md:flex items-center space-x-3 shrink-0">
             {/* Language Toggle amélioré */}
-            <div className="flex items-center space-x-2 bg-slate-800/50 backdrop-blur-sm rounded-xl p-1.5 border border-slate-700/50">
-              <FaGlobe className="w-4 h-4 text-slate-400 shrink-0" />
-              <div className="flex bg-slate-700/50 rounded-lg p-0.5">
-                {['fr', 'en'].map((lang) => (
+            <div className="flex items-center space-x-2 backdrop-blur-sm rounded-xl p-1.5" style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', border: '1px solid rgba(124, 108, 91, 0.5)'}}>
+              <FaGlobe className="w-4 h-4 text-stone-400 shrink-0" />
+              <div className="flex rounded-lg p-0.5" style={{backgroundColor: 'rgba(124, 108, 91, 0.5)'}}>
+                {['fr', 'en', 'ar'].map((lang) => (
                   <button
                     key={lang}
                     onClick={() => setLanguage(lang)}
-                    className={`relative px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-300 ${
+                    className={`relative cursor-pointer px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-300 ${
                       language === lang
-                        ? 'text-white bg-gradient-to-r from-amber-400 to-amber-600 shadow-lg shadow-amber-500/25'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-600/50'
+                        ? 'text-white shadow-lg'
+                        : 'text-stone-400 hover:text-stone-200'
                     }`}
+                    style={language === lang ? {
+                      background: 'linear-gradient(to right, #bd915a, #7d5a34)',
+                      boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.25)'
+                    } : {}}
+                    onMouseEnter={(e) => language !== lang && (e.target.style.backgroundColor = 'rgba(100, 116, 139, 0.5)')}
+                    onMouseLeave={(e) => language !== lang && (e.target.style.backgroundColor = 'transparent')}
                   >
                     {lang.toUpperCase()}
                   </button>
@@ -107,18 +120,21 @@ const Navbar = () => {
             </div>
 
             {/* Séparateur */}
-            <div className="w-px h-6 bg-slate-700/50 shrink-0"></div>
+            <div className="w-px h-6 shrink-0" style={{backgroundColor: 'rgba(124, 108, 91, 0.5)'}}></div>
 
             {/* Theme Toggle amélioré */}
             <button
               onClick={toggleTheme}
-              className="group p-2.5 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl text-slate-300 hover:text-white hover:border-amber-400/30 hover:bg-amber-400/10 transition-all duration-300"
+              className="group cursor-pointer p-2.5 backdrop-blur-sm rounded-xl text-stone-300 hover:text-white transition-all duration-300"
+              style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', border: '1px solid rgba(124, 108, 91, 0.5)'}}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(189, 145, 90, 0.3)'; e.currentTarget.style.backgroundColor = 'rgba(189, 145, 90, 0.1)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(124, 108, 91, 0.5)'; e.currentTarget.style.backgroundColor = 'rgba(52, 45, 36, 0.5)'; }}
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <FaSun className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <FaSun className="w-4 h-4 group-hover:scale-110 transition-transform cursor-pointer duration-300" />
               ) : (
-                <FaMoon className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <FaMoon className="w-4 h-4 group-hover:scale-110 transition-transform cursor-pointer duration-300" />
               )}
             </button>
           </div>
@@ -126,7 +142,10 @@ const Navbar = () => {
           {/* Mobile Menu Button amélioré */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden group p-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl text-slate-300 hover:text-white hover:border-amber-400/30 hover:bg-amber-400/10 transition-all duration-300 shrink-0"
+            className="md:hidden group p-3 backdrop-blur-sm rounded-xl text-stone-300 hover:text-white transition-all duration-300 shrink-0"
+            style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', border: '1px solid rgba(124, 108, 91, 0.5)'}}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(189, 145, 90, 0.3)'; e.currentTarget.style.backgroundColor = 'rgba(189, 145, 90, 0.1)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(124, 108, 91, 0.5)'; e.currentTarget.style.backgroundColor = 'rgba(52, 45, 36, 0.5)'; }}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -140,7 +159,7 @@ const Navbar = () => {
         {/* Mobile Menu amélioré */}
         {isMenuOpen && (
           <div className="md:hidden animate-fade-in pb-4">
-            <div className="mt-4 bg-slate-800/95 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl shadow-slate-900/50 overflow-hidden">
+            <div className="mt-4 backdrop-blur-xl rounded-2xl overflow-hidden" style={{backgroundColor: 'rgba(52, 45, 36, 0.95)', border: '1px solid rgba(124, 108, 91, 0.5)', boxShadow: '0 25px 50px -12px rgba(17, 17, 14, 0.5)'}}>
               {/* Navigation Items */}
               <div className="flex flex-col space-y-1 p-4">
                 {navItems.map((item) => (
@@ -150,36 +169,43 @@ const Navbar = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-300 ${
                       activeSection === item.label.replace('#', '')
-                        ? 'text-white bg-gradient-to-r from-amber-400/20 to-amber-600/20 border border-amber-400/30 shadow-lg shadow-amber-500/10'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                        ? 'text-white border shadow-lg'
+                        : 'text-stone-300 hover:text-white'
                     }`}
+                    style={activeSection === item.label.replace('#', '') ? {
+                      background: 'linear-gradient(to right, rgba(189, 145, 90, 0.2), rgba(125, 90, 52, 0.2))',
+                      borderColor: 'rgba(189, 145, 90, 0.3)',
+                      boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.1)'
+                    } : {}}
+                    onMouseEnter={(e) => activeSection !== item.label.replace('#', '') && (e.currentTarget.style.backgroundColor = 'rgba(124, 108, 91, 0.5)')}
+                    onMouseLeave={(e) => activeSection !== item.label.replace('#', '') && (e.currentTarget.style.backgroundColor = 'transparent')}
                   >
-                    <div className={`w-2 h-2 rounded-full shrink-0 ${
-                      activeSection === item.label.replace('#', '') 
-                        ? 'bg-amber-400' 
-                        : 'bg-slate-600'
-                    }`}></div>
+                    <div className="w-2 h-2 rounded-full shrink-0" style={{backgroundColor: activeSection === item.label.replace('#', '') ? '#bd915a' : '#64748b'}}></div>
                     <span>{t(item.label)}</span>
                   </a>
                 ))}
               </div>
 
               {/* Controls Mobile */}
-              <div className="px-4 py-4 mt-2 border-t border-slate-700/50">
+              <div className="px-4 py-4 mt-2" style={{borderTop: '1px solid rgba(124, 108, 91, 0.5)'}}>
                 <div className="flex items-center justify-between gap-3">
                   {/* Language Toggle Mobile */}
                   <div className="flex items-center space-x-2 flex-1">
-                    <FaGlobe className="w-4 h-4 text-slate-400 shrink-0" />
-                    <div className="flex bg-slate-700/50 rounded-lg p-1 flex-1">
-                      {['fr', 'en'].map((lang) => (
+                    <FaGlobe className="w-4 h-4 text-stone-400 shrink-0" />
+                    <div className="flex rounded-lg p-1 flex-1" style={{backgroundColor: 'rgba(124, 108, 91, 0.5)'}}>
+                      {['fr', 'en', 'ar'].map((lang) => (
                         <button
                           key={lang}
                           onClick={() => setLanguage(lang)}
                           className={`flex-1 px-4 py-2 text-sm font-semibold rounded transition-all duration-300 ${
                             language === lang
-                              ? 'text-white bg-gradient-to-r from-amber-400 to-amber-600 shadow-lg shadow-amber-500/25'
-                              : 'text-slate-400 hover:text-slate-200'
+                              ? 'text-white shadow-lg'
+                              : 'text-stone-400 hover:text-stone-200'
                           }`}
+                          style={language === lang ? {
+                            background: 'linear-gradient(to right, #bd915a, #7d5a34)',
+                            boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.25)'
+                          } : {}}
                         >
                           {lang.toUpperCase()}
                         </button>
@@ -190,7 +216,10 @@ const Navbar = () => {
                   {/* Theme Toggle Mobile */}
                   <button
                     onClick={toggleTheme}
-                    className="p-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-slate-300 hover:text-white hover:border-amber-400/30 hover:bg-amber-400/10 transition-all duration-300 shrink-0"
+                    className="p-3 rounded-lg text-stone-300 hover:text-white transition-all duration-300 shrink-0"
+                    style={{backgroundColor: 'rgba(124, 108, 91, 0.5)', border: '1px solid rgba(100, 116, 139, 0.5)'}}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(189, 145, 90, 0.3)'; e.currentTarget.style.backgroundColor = 'rgba(189, 145, 90, 0.1)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(100, 116, 139, 0.5)'; e.currentTarget.style.backgroundColor = 'rgba(124, 108, 91, 0.5)'; }}
                     aria-label="Toggle theme"
                   >
                     {isDark ? (

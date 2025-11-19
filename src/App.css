@@ -4,9 +4,15 @@
 @import "tailwindcss/utilities" layer(utilities);
 
 @theme {
-  --color-primary: #d4af37;
-  --color-primary-light: #f0d673;
-  --color-primary-dark: #b8941e;
+  --noor-900: #11110e;
+  --noor-800: #342d24;
+  --noor-700: #7c6c5b;
+  --noor-600: #7d5a34;
+  --noor-500: #bd915a;
+  --noor-gold: #bd915a;
+  --color-primary: #bd915a;
+  --color-primary-light: #7c6c5b;
+  --color-primary-dark: #7d5a34;
   
   /* Responsive spacing */
   --spacing-mobile: 1rem;
@@ -22,7 +28,7 @@
   }
   
   body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--noor-900) 0%, var(--noor-800) 100%);
     color: #e2e8f0;
     font-family: system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
@@ -43,7 +49,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--noor-900);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -67,6 +73,39 @@
       min-width: 44px;
     }
   }
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .space-x-2 > * + *,
+[dir="rtl"] .space-x-3 > * + *,
+[dir="rtl"] .space-x-4 > * + * {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Fix icon alignment in RTL */
+[dir="rtl"] .flex.items-center.space-x-2,
+[dir="rtl"] .flex.items-center.space-x-3,
+[dir="rtl"] .flex.items-center.gap-2,
+[dir="rtl"] .flex.items-center.gap-3 {
+  direction: rtl;
 }
 
 @layer components {
@@ -414,13 +453,13 @@ body.light-mode nav,
   }
 }
 
-body.light-mode .text-slate-300,
-.light-mode .text-slate-300 {
+body.light-mode .text-stone-300,
+.light-mode .text-stone-300 {
   color: rgb(51 65 85) !important;
 }
 
-body.light-mode .text-slate-300:hover,
-.light-mode .text-slate-300:hover {
+body.light-mode .text-stone-300:hover,
+.light-mode .text-stone-300:hover {
   color: rgb(15 23 42) !important;
 }
 
@@ -429,23 +468,23 @@ body.light-mode .text-white,
   color: rgb(15 23 42) !important;
 }
 
-body.light-mode .bg-slate-900\/80,
-.light-mode .bg-slate-900\/80 {
+body.light-mode .bg-stone-900\/80,
+.light-mode .bg-stone-900\/80 {
   background: rgba(255, 255, 255, 0.95) !important;
 }
 
-body.light-mode .bg-slate-800\/50,
-.light-mode .bg-slate-800\/50 {
+body.light-mode .bg-stone-800\/50,
+.light-mode .bg-stone-800\/50 {
   background: rgba(241, 245, 249, 1) !important;
 }
 
-body.light-mode .text-slate-400,
-.light-mode .text-slate-400 {
+body.light-mode .text-stone-400,
+.light-mode .text-stone-400 {
   color: rgb(100 116 139) !important;
 }
 
-body.light-mode .border-slate-700,
-.light-mode .border-slate-700 {
+body.light-mode .border-stone-700,
+.light-mode .border-stone-700 {
   border-color: rgb(226 232 240) !important;
 }
 
@@ -490,7 +529,7 @@ body.light-mode .bg-gradient-to-br,
 
 body.light-mode .bg-indigo-500\/10,
 .light-mode .bg-indigo-500\/10 {
-  background: rgba(212, 175, 55, 0.08) !important;
+  background: rgba(189, 145, 90, 0.08) !important;
 }
 
 body.light-mode h1,
@@ -498,14 +537,14 @@ body.light-mode h1,
   color: rgb(15 23 42) !important;
 }
 
-body.light-mode p.text-slate-300,
-.light-mode p.text-slate-300 {
+body.light-mode p.text-stone-300,
+.light-mode p.text-stone-300 {
   color: rgb(71 85 105) !important;
 }
 
 body.light-mode .border-indigo-400\/50,
 .light-mode .border-indigo-400\/50 {
-  border-color: rgba(212, 175, 55, 0.4) !important;
+  border-color: rgba(189, 145, 90, 0.4) !important;
 }
 
 body.light-mode .bg-indigo-400,
@@ -521,6 +560,11 @@ body.light-mode .bg-indigo-500,
 body.light-mode .text-gold-400,
 .light-mode .text-gold-400 {
   color: var(--color-primary-dark) !important;
+}
+
+body.light-mode #testimonials,
+.light-mode #testimonials {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
 }
 
 body.light-mode .text-gold-200,
@@ -583,9 +627,9 @@ body.light-mode textarea::placeholder,
 }
 
 body.light-mode .placeholder-gold-400\/50::placeholder,
-body.light-mode .placeholder-slate-500::placeholder,
+body.light-mode .placeholder-stone-500::placeholder,
 .light-mode .placeholder-gold-400\/50::placeholder,
-.light-mode .placeholder-slate-500::placeholder {
+.light-mode .placeholder-stone-500::placeholder {
   color: rgb(148 163 184) !important;
 }
 
@@ -601,8 +645,8 @@ body.light-mode #contact,
   background: #f8fafc !important;
 }
 
-body.light-mode .bg-slate-800,
-.light-mode .bg-slate-800 {
+body.light-mode .bg-stone-800,
+.light-mode .bg-stone-800 {
   background: #f8fafc !important;
 }
 

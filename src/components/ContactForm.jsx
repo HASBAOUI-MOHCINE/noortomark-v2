@@ -57,7 +57,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
   };
 
   return (
-    <section id="contact" className="py-20 md:py-24 bg-slate-800">
+    <section id="contact" className="py-20 md:py-24 bg-stone-800">
       <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
         <h2 className="section-title text-white text-4xl sm:text-5xl md:text-6xl mb-12">
           {t('request-service')}
@@ -76,7 +76,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
                 value={formData.service}
                 onChange={handleChange}
                 required
-                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-slate-300 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
+                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-stone-300 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
               >
                 <option value="">{t('choose-service-placeholder')}</option>
                 {services.map((service) => (
@@ -100,7 +100,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
                 onChange={handleChange}
                 required
                 placeholder={t('name-placeholder')}
-                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-slate-300 placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
+                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-stone-300 placeholder-stone-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
               />
             </div>
 
@@ -117,7 +117,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
                 onChange={handleChange}
                 required
                 placeholder="email@example.com"
-                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-slate-300 placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
+                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-stone-300 placeholder-stone-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
               />
             </div>
 
@@ -134,7 +134,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
                 onChange={handleChange}
                 required
                 placeholder="+212 6 12 34 56 78"
-                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-slate-300 placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
+                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-stone-300 placeholder-stone-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300"
               />
             </div>
 
@@ -150,7 +150,7 @@ ${formData.message ? `Message: ${formData.message}` : ''}
                 onChange={handleChange}
                 rows={4}
                 placeholder={t('message-placeholder')}
-                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-slate-300 placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300 resize-none"
+                className="w-full bg-black/50 border border-gold-400/50 rounded-lg px-5 py-4 text-lg text-stone-300 placeholder-stone-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all duration-300 resize-none"
               />
             </div>
           </div>

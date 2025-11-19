@@ -4,13 +4,15 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../data/translations';
 import { testimonials } from '../data/testimonials.js';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { useTheme } from '../hooks/useTheme';
 
 const Testimonials = () => {
   const { language } = useLanguage();
+  const { isDark } = useTheme();
   const t = (key) => translations[language][key] || key;
 
   return (
-    <section id="testimonials" className="py-20 md:py-24 bg-gradient-to-b from-slate-800 to-slate-900">
+    <section id="testimonials" className="py-20 md:py-24" style={isDark ? {background: 'linear-gradient(to bottom, #342d24, #11110e)'} : {}}>
       <div className="container mx-auto px-6 lg:px-8">
         <h2 className="section-title text-white text-4xl sm:text-5xl md:text-6xl mb-12">
           {t('testimonials-title')}
@@ -38,7 +40,7 @@ const Testimonials = () => {
               </div>
               
               {/* Testimonial Text */}
-              <p className="text-lg sm:text-xl text-slate-300 italic mb-6 leading-relaxed relative z-10">
+              <p className="text-lg sm:text-xl text-stone-300 italic mb-6 leading-relaxed relative z-10">
                 {t(testimonial.text)}
               </p>
               
@@ -58,11 +60,11 @@ const Testimonials = () => {
         
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-slate-800/50 border border-gold-400/30 rounded-2xl p-8 max-w-2xl mx-auto">
+          <div className="border rounded-2xl p-8 max-w-2xl mx-auto" style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', borderColor: 'rgba(189, 145, 90, 0.3)'}}>
             <h3 className="text-2xl font-bold text-gold-400 mb-4">
               {language === 'en' ? 'Ready to elevate your brand?' : 'Prêt à élever votre marque ?'}
             </h3>
-            <p className="text-base text-slate-300 mb-6">
+            <p className="text-base text-stone-300 mb-6">
               {language === 'en' 
                 ? 'Join our satisfied clients and experience the Noortomark difference.'
                 : 'Rejoignez nos clients satisfaits et découvrez la différence Noortomark.'

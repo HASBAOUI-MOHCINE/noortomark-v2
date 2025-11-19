@@ -40,7 +40,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-24 bg-gradient-to-b from-slate-800 to-slate-900">
+    <section id="about" className="py-20 md:py-24 bg-gradient-to-b from-stone-800 to-stone-900">
       <div className="container mx-auto px-6 lg:px-8">
         <h2 className="section-title text-white text-4xl sm:text-5xl md:text-6xl mb-12">
           {t('about-title')}
@@ -49,36 +49,36 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-16">
           {/* Text Content */}
           <div className="space-y-6">
-            <p className="text-xl sm:text-2xl md:text-2xl text-slate-300 leading-relaxed">
+            <p className="text-xl sm:text-2xl md:text-2xl text-stone-300 leading-relaxed">
               {t('about-p1')}
             </p>
-            <p className="text-xl sm:text-2xl md:text-2xl text-slate-300 leading-relaxed">
+            <p className="text-xl sm:text-2xl md:text-2xl text-stone-300 leading-relaxed">
               {t('about-p2')}
             </p>
             
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 mt-8">
-              <div className="text-center p-6 bg-slate-900/50 rounded-xl">
+              <div className="text-center p-6 bg-stone-900/50 rounded-xl">
                 <div className="text-4xl sm:text-5xl md:text-5xl font-bold text-gold-400 mb-2">50+</div>
-                <div className="text-slate-300 text-base sm:text-lg uppercase tracking-wider">
+                <div className="text-stone-300 text-base sm:text-lg uppercase tracking-wider">
                   {language === 'en' ? 'Projects' : 'Projets'}
                 </div>
               </div>
-              <div className="text-center p-6 bg-slate-900/50 rounded-xl">
+              <div className="text-center p-6 bg-stone-900/50 rounded-xl">
                 <div className="text-4xl sm:text-5xl md:text-5xl font-bold text-gold-400 mb-2">30+</div>
-                <div className="text-slate-300 text-base sm:text-lg uppercase tracking-wider">
+                <div className="text-stone-300 text-base sm:text-lg uppercase tracking-wider">
                   {language === 'en' ? 'Clients' : 'Clients'}
                 </div>
               </div>
-              <div className="text-center p-6 bg-slate-900/50 rounded-xl">
+              <div className="text-center p-6 bg-stone-900/50 rounded-xl">
                 <div className="text-4xl sm:text-5xl md:text-5xl font-bold text-gold-400 mb-2">98%</div>
-                <div className="text-slate-300 text-base sm:text-lg uppercase tracking-wider">
+                <div className="text-stone-300 text-base sm:text-lg uppercase tracking-wider">
                   {language === 'en' ? 'Satisfaction' : 'Satisfaction'}
                 </div>
               </div>
-              <div className="text-center p-6 bg-slate-900/50 rounded-xl">
+              <div className="text-center p-6 bg-stone-900/50 rounded-xl">
                 <div className="text-4xl sm:text-5xl md:text-5xl font-bold text-gold-400 mb-2">24/7</div>
-                <div className="text-slate-300 text-base sm:text-lg uppercase tracking-wider">
+                <div className="text-stone-300 text-base sm:text-lg uppercase tracking-wider">
                   {language === 'en' ? 'Support' : 'Support'}
                 </div>
               </div>
@@ -87,7 +87,7 @@ const About = () => {
           
           {/* Visual Element */}
           <div className="relative">
-            <div className="bg-slate-800/50 rounded-2xl p-8 border border-gold-400/30 backdrop-blur-sm">
+            <div className="bg-stone-800/50 rounded-2xl p-8 border border-gold-400/30 backdrop-blur-sm">
               <div className="grid grid-cols-2 gap-6">
                 {features.map((feature) => (
                   <div 
@@ -102,7 +102,7 @@ const About = () => {
                     <h3 className="font-bold text-gold-400 mb-2 text-lg sm:text-xl transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+                    <p className="text-base sm:text-lg text-stone-300 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -128,7 +128,7 @@ const About = () => {
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gold-400 mb-4 sm:mb-6 relative z-10">
               {language === 'en' ? 'Our Mission' : 'Notre Mission'}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed relative z-10">
+            <p className="text-base sm:text-lg md:text-xl text-stone-300 leading-relaxed relative z-10">
               {language === 'en' 
                 ? 'To transform your ideas into impactful digital experiences that drive growth and build lasting brand value.'
                 : 'Transformer vos idées en expériences digitales impactantes qui stimulent la croissance et construisent une valeur de marque durable.'

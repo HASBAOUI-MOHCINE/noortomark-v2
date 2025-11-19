@@ -19,6 +19,8 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('language', language);
     document.documentElement.lang = language;
+    // Set RTL direction for Arabic
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
 
   const value = {

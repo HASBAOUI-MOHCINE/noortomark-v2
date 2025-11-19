@@ -14,7 +14,7 @@ function AppContent() {
   useTheme(); // Initialize theme
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100">
+    <div className="min-h-screen text-stone-100" style={{background: 'linear-gradient(to bottom right, #11110e, #342d24, #11110e)'}}>
       <Navbar />
       <main className="relative">
         <Hero />

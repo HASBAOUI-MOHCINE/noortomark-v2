@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12 px-6">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900"></div>
       
       {/* Animated orbs with gold tint */}
       <div className="absolute top-20 left-10 w-72 h-72 md:w-96 md:h-96 bg-gold-400/10 rounded-full blur-3xl animate-float"></div>
@@ -33,19 +33,19 @@ const Hero = () => {
         </h1>
         
         {/* Subtitle with gradient */}
-        <p className="text-xl sm:text-2xl md:text-3xl mb-12 text-slate-300 max-w-4xl mx-auto leading-relaxed px-4">
+        <p className="text-xl sm:text-2xl md:text-3xl mb-12 text-stone-300 max-w-4xl mx-auto leading-relaxed px-4">
           {t('hero-text')}
         </p>
         
         {/* Features Pills */}
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 max-w-3xl mx-auto">
-          <span className="px-5 py-2.5 bg-slate-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-slate-300 backdrop-blur-sm">
+          <span className="px-5 py-2.5 bg-stone-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-stone-300 backdrop-blur-sm">
             ✨ {language === 'en' ? 'Web Development' : 'Développement Web'}
           </span>
-          <span className="px-5 py-2.5 bg-slate-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-slate-300 backdrop-blur-sm">
+          <span className="px-5 py-2.5 bg-stone-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-stone-300 backdrop-blur-sm">
             🎨 {language === 'en' ? 'Graphic Design' : 'Design Graphique'}
           </span>
-          <span className="px-5 py-2.5 bg-slate-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-slate-300 backdrop-blur-sm">
+          <span className="px-5 py-2.5 bg-stone-800/50 border border-gold-400/20 rounded-full text-base sm:text-lg text-stone-300 backdrop-blur-sm">
             📱 {language === 'en' ? 'Digital Marketing' : 'Marketing Digital'}
           </span>
         </div>
@@ -70,22 +70,22 @@ const Hero = () => {
         <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 max-w-3xl mx-auto px-4">
           <div className="text-center">
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-gold-400 mb-2">50+</div>
-            <div className="text-sm sm:text-base text-slate-400">{language === 'en' ? 'Projects' : 'Projets'}</div>
+            <div className="text-sm sm:text-base text-stone-400">{language === 'en' ? 'Projects' : 'Projets'}</div>
           </div>
           <div className="text-center border-x border-gold-400/20">
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-gold-400 mb-2">30+</div>
-            <div className="text-sm sm:text-base text-slate-400">{language === 'en' ? 'Clients' : 'Clients'}</div>
+            <div className="text-sm sm:text-base text-stone-400">{language === 'en' ? 'Clients' : 'Clients'}</div>
           </div>
           <div className="text-center">
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-gold-400 mb-2">98%</div>
-            <div className="text-sm sm:text-base text-slate-400">{language === 'en' ? 'Satisfaction' : 'Satisfaction'}</div>
+            <div className="text-sm sm:text-base text-stone-400">{language === 'en' ? 'Satisfaction' : 'Satisfaction'}</div>
           </div>
         </div>
       </div>
       
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-slate-400 uppercase tracking-wider">
+        <span className="text-xs text-stone-400 uppercase tracking-wider">
           {language === 'en' ? 'Scroll Down' : 'Défiler'}
         </span>
         <div className="w-6 h-10 border-2 border-gold-400/50 rounded-full flex justify-center">

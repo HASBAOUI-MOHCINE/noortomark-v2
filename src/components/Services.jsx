@@ -46,7 +46,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 backdrop-blur-lg rounded-3xl p-6 lg:p-8 border border-stone-700/50 hover:border-stone-400/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-stone-500/10"
+              className="group relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-stone-700/50 hover:border-stone-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-stone-500/20"
               style={{ 
                 animationDelay: `${index * 100}ms`,
                 transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -55,68 +55,76 @@ const Services = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Hover Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-stone-400/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+              <div className={`absolute inset-0 bg-gradient-to-br from-stone-500/10 to-stone-700/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
                 hoveredCard === index ? 'opacity-100' : ''
               }`}></div>
               
-              {/* Card Number */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br from-stone-400 to-stone-600 rounded-full flex items-center justify-center shadow-lg shadow-stone-500/25">
-                <span className="text-stone-900 text-sm font-bold">0{index + 1}</span>
+              {/* Card Number Badge */}
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-stone-500 to-stone-700 rounded-2xl flex items-center justify-center shadow-xl shadow-stone-500/30 group-hover:scale-110 transition-transform duration-300">
+                <span className="text-white text-lg font-bold">0{index + 1}</span>
               </div>
 
               {/* Service Icon */}
-              <div className="relative mb-6">
-                <div className="inline-flex p-4 lg:p-5 bg-gradient-to-br from-stone-700 to-stone-800 rounded-2xl group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                  <service.icon className="w-10 h-10 sm:w-12 sm:h-12 text-stone-400" />
+              <div className="relative mb-8">
+                <div className="inline-flex p-5 lg:p-6 bg-gradient-to-br from-stone-700/80 to-stone-800/80 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-stone-900/50">
+                  <service.icon className="w-12 h-12 sm:w-14 sm:h-14 text-stone-300 group-hover:text-stone-100 transition-colors duration-300" />
                 </div>
-                {/* Animated Circle */}
-                <div className="absolute -top-2 -right-2 w-6 h-6 border-2 border-stone-400/50 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></div>
+                {/* Animated Ring */}
+                <div className="absolute -top-2 -right-2 w-8 h-8 border-2 border-stone-500/50 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></div>
               </div>
 
               {/* Service Content */}
-              <div className="relative">
-                <h3 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-white mb-4 group-hover:text-stone-400 transition-colors duration-300">
-                  {t(service.title)}
-                </h3>
-                
-                <p className="text-stone-300 leading-relaxed lg:leading-loose mb-6 text-lg sm:text-xl lg:text-xl">
-                  {t(service.description)}
-                </p>
+              <div className="relative space-y-6">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-stone-300 transition-colors duration-300">
+                    {t(service.title)}
+                  </h3>
+                  
+                  <p className="text-stone-400 leading-relaxed text-base sm:text-lg">
+                    {t(service.description)}
+                  </p>
+                </div>
 
                 {/* Features List */}
                 {service.features && (
-                  <ul className="space-y-3 mb-6">
-                    {service.features.slice(0, 3).map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3 text-stone-400 text-base sm:text-lg">
-                        <FaCheck className="w-5 h-5 text-stone-400 flex-shrink-0" />
-                        <span>{t(feature)}</span>
-                      </li>
+                  <div className="space-y-2.5">
+                    {service.features.slice(0, 4).map((feature, featureIndex) => (
+                      <div 
+                        key={featureIndex} 
+                        className="flex items-start gap-3 text-stone-400 text-sm sm:text-base group-hover:text-stone-300 transition-colors duration-300"
+                      >
+                        <FaCheck className="w-4 h-4 text-stone-500 flex-shrink-0 mt-1 group-hover:text-stone-400 transition-colors duration-300" />
+                        <span className="leading-snug">{t(feature)}</span>
+                      </div>
                     ))}
-                  </ul>
+                    {service.features.length > 4 && (
+                      <div className="text-xs text-stone-500 pl-7 pt-1">
+                        +{service.features.length - 4} {language === 'en' ? 'more features' : language === 'fr' ? 'autres fonctionnalités' : 'ميزات أخرى'}
+                      </div>
+                    )}
+                  </div>
                 )}
 
-                {/* Footer with CTA */}
-                <div className="flex items-center justify-between pt-6 border-t border-stone-700/50 group-hover:border-stone-400/30 transition-colors duration-300">
+                {/* Footer with Duration & CTA */}
+                <div className="flex items-center justify-between pt-6 border-t border-stone-700/50 group-hover:border-stone-600/50 transition-colors duration-300">
                   <div className="flex items-center gap-2">
-                    <FaStar className="w-4 h-4 text-stone-400" />
-                    <span className="text-sm text-stone-400 font-medium">
+                    <FaStar className="w-4 h-4 text-stone-500 group-hover:text-stone-400 transition-colors duration-300" />
+                    <span className="text-sm text-stone-500 font-medium group-hover:text-stone-400 transition-colors duration-300">
                       {service.duration || 'Flexible'}
                     </span>
                   </div>
                   
-                  <button className="flex items-center gap-2 text-stone-400 hover:text-stone-300 transition-colors duration-300 group/btn">
+                  <button className="flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors duration-300 group/btn">
                     <span className="text-sm font-semibold">
-                      {language === 'en' ? 'Learn More' : 'En Savoir Plus'}
+                      {language === 'en' ? 'Details' : language === 'fr' ? 'Détails' : 'التفاصيل'}
                     </span>
-                    <FaArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    <FaArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
               </div>
 
               {/* Animated Border Effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-stone-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
-                <div className="absolute inset-[1px] rounded-3xl bg-stone-900"></div>
-              </div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-stone-500/20 to-stone-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"></div>
             </div>
           ))}
         </div>

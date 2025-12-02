@@ -1,42 +1,91 @@
 // src/data/services.js
 import { 
-  FaBriefcase, 
-  FaPalette, 
-  FaGlobe, 
+  FaBullhorn, 
+  FaCode, 
   FaChartLine, 
-  FaShieldAlt, 
-  FaHeadset 
+  FaInstagram, 
+  FaPencilAlt, 
+  FaRocket 
 } from 'react-icons/fa';
 
 export const services = [
   {
-    icon: FaBriefcase,
-    title: 'luxury-branding',
-    description: 'luxury-branding-desc'
+    icon: FaBullhorn,
+    title: 'marketing-services',
+    description: 'marketing-services-desc',
+    features: [
+      'meta-ads-feature',
+      'tiktok-ads-feature',
+      'funnel-feature',
+      'social-media-management-feature',
+      'content-strategy-feature',
+      'marketing-audit-feature',
+      'competition-analysis-feature',
+      'action-plan-feature'
+    ],
+    duration: '30 Days Plan'
   },
   {
-    icon: FaPalette,
-    title: 'premium-design',
-    description: 'premium-design-desc'
+    icon: FaCode,
+    title: 'frontend-development',
+    description: 'frontend-development-desc',
+    features: [
+      'landing-pages-feature',
+      'mini-sites-feature',
+      'react-components-feature',
+      'animations-feature',
+      'responsive-design-feature',
+      'seo-technical-feature',
+      'debug-maintenance-feature'
+    ],
+    duration: 'Flexible'
   },
   {
-    icon: FaGlobe,
-    title: 'global-marketing',
-    description: 'global-marketing-desc'
+    icon: FaPencilAlt,
+    title: 'copywriting-services',
+    description: 'copywriting-services-desc',
+    features: [
+      'posts-copywriting-feature',
+      'ads-copywriting-feature',
+      'emails-copywriting-feature',
+      'landing-pages-content-feature'
+    ],
+    duration: '7-14 Days'
+  },
+  {
+    icon: FaInstagram,
+    title: 'social-optimization',
+    description: 'social-optimization-desc',
+    features: [
+      'instagram-optimization-feature',
+      'tiktok-optimization-feature',
+      'content-calendar-feature',
+      'engagement-strategy-feature'
+    ],
+    duration: 'Monthly'
   },
   {
     icon: FaChartLine,
-    title: 'business-consulting',
-    description: 'business-consulting-desc'
+    title: 'reporting-analysis',
+    description: 'reporting-analysis-desc',
+    features: [
+      'monthly-reporting-feature',
+      'performance-tracking-feature',
+      'roi-analysis-feature',
+      'recommendations-feature'
+    ],
+    duration: 'Monthly'
   },
   {
-    icon: FaShieldAlt,
-    title: 'security-privacy',
-    description: 'security-privacy-desc'
-  },
-  {
-    icon: FaHeadset,
-    title: 'premium-support',
-    description: 'premium-support-desc'
+    icon: FaRocket,
+    title: 'strategic-coaching',
+    description: 'strategic-coaching-desc',
+    features: [
+      'marketing-strategy-feature',
+      'campaign-creation-feature',
+      'growth-consulting-feature',
+      'personalized-coaching-feature'
+    ],
+    duration: 'Flexible'
   }
 ];

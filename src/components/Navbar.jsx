@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../hooks/useTheme.js';
 import { translations } from '../data/translations.js';
 import { FaSun, FaMoon, FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 import logo from '../logo/logo.jpeg';
 
 const Navbar = () => {
@@ -12,35 +13,45 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      // Detect active section
-      const sections = ['home', 'about', 'services', 'contact'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      if (isHome) {
+        // Detect active section only on home page
+        const sections = ['home', 'about', 'services', 'contact'];
+        const current = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        if (current) setActiveSection(current);
+      }
     };
+
+    if (location.pathname === '/services') {
+      setActiveSection('services');
+    } else {
+      handleScroll();
+    }
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome, location.pathname]);
 
   const t = (key) => translations[language][key] || key;
 
   const navItems = [
-    { href: '#home', label: 'home' },
-    { href: '#about', label: 'about' },
-    { href: '#services', label: 'services' },
-    { href: '#contact', label: 'contact' },
+    { href: isHome ? '#home' : '/#home', label: 'home' },
+    { href: isHome ? '#about' : '/#about', label: 'about' },
+    { href: '/services', label: 'services' },
+    { href: isHome ? '#contact' : '/#contact', label: 'contact' },
   ];
 
   return (

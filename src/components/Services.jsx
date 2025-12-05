@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../data/translations';
 import { services } from '../data/services.js';
 import { FaArrowRight, FaCheck, FaStar, FaRocket } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { language } = useLanguage();
@@ -114,12 +115,15 @@ const Services = () => {
                     </span>
                   </div>
                   
-                  <button className="flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors duration-300 group/btn">
+                  <Link 
+                    to="/services"
+                    className="flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors duration-300 group/btn"
+                  >
                     <span className="text-sm font-semibold">
                       {language === 'en' ? 'Details' : language === 'fr' ? 'Détails' : 'التفاصيل'}
                     </span>
                     <FaArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

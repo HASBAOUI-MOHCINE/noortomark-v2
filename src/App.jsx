@@ -1,13 +1,11 @@
 
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext.jsx';
 import { useTheme } from './hooks/useTheme.js';
 import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Services from './components/Services.jsx';
-import ContactForm from './components/ContactForm.jsx';
-import Testimonials from './components/Testimonials.jsx';
+import Home from './pages/Home.jsx';
+import ServicesPage from './pages/ServicesPage.jsx';
 import Footer from './components/Footer.jsx';
 
 function AppContent() {
@@ -17,11 +15,10 @@ function AppContent() {
     <div className="min-h-screen text-stone-100" style={{background: 'linear-gradient(to bottom right, #11110e, #342d24, #11110e)'}}>
       <Navbar />
       <main className="relative">
-        <Hero />
-        <About />
-        <Services />
-        <ContactForm />
-        <Testimonials />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+        </Routes>
         <Footer />
       </main>
     </div>
@@ -31,7 +28,9 @@ function AppContent() {
 function App() {
   return (
     <LanguageProvider>
-      <AppContent />
+      <Router>
+        <AppContent />
+      </Router>
     </LanguageProvider>
   );
 }

@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../hooks/useTheme.js';
 import { translations } from '../data/translations.js';
 import { FaSun, FaMoon, FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import logo from '../logo/logo.jpeg';
 
 const Navbar = () => {
@@ -81,27 +81,51 @@ const Navbar = () => {
           {/* Desktop Navigation amélioré */}
           <div className="hidden md:flex items-center space-x-1 backdrop-blur-sm rounded-2xl p-1" style={{backgroundColor: 'rgba(52, 45, 36, 0.5)', border: '1px solid rgba(124, 108, 91, 0.5)'}}>
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
-                  activeSection === item.label.replace('#', '')
-                    ? 'text-white border shadow-lg'
-                    : 'text-stone-300 hover:text-white'
-                }`}
-                style={activeSection === item.label.replace('#', '') ? {
-                  background: 'linear-gradient(to right, rgba(189, 145, 90, 0.2), rgba(125, 90, 52, 0.2))',
-                  borderColor: 'rgba(189, 145, 90, 0.3)',
-                  boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.1)'
-                } : {}}
-                onMouseEnter={(e) => !activeSection === item.label.replace('#', '') && (e.target.style.backgroundColor = 'rgba(124, 108, 91, 0.5)')}
-                onMouseLeave={(e) => !activeSection === item.label.replace('#', '') && (e.target.style.backgroundColor = 'transparent')}
-              >
-                {t(item.label)}
-                {activeSection === item.label.replace('#', '') && (
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full" style={{backgroundColor: '#bd915a'}}></div>
-                )}
-              </a>
+              item.href === "/services" ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
+                    activeSection === item.label.replace('#', '')
+                      ? 'text-white border shadow-lg'
+                      : 'text-stone-300 hover:text-white'
+                  }`}
+                  style={activeSection === item.label.replace('#', '') ? {
+                    background: 'linear-gradient(to right, rgba(189, 145, 90, 0.2), rgba(125, 90, 52, 0.2))',
+                    borderColor: 'rgba(189, 145, 90, 0.3)',
+                    boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.1)'
+                  } : {}}
+                  onMouseEnter={(e) => activeSection !== item.label.replace('#', '') && (e.target.style.backgroundColor = 'rgba(124, 108, 91, 0.5)')}
+                  onMouseLeave={(e) => activeSection !== item.label.replace('#', '') && (e.target.style.backgroundColor = 'transparent')}
+                >
+                  {t(item.label)}
+                  {activeSection === item.label.replace('#', '') && (
+                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full" style={{backgroundColor: '#bd915a'}}></div>
+                  )}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
+                    activeSection === item.label.replace('#', '')
+                      ? 'text-white border shadow-lg'
+                      : 'text-stone-300 hover:text-white'
+                  }`}
+                  style={activeSection === item.label.replace('#', '') ? {
+                    background: 'linear-gradient(to right, rgba(189, 145, 90, 0.2), rgba(125, 90, 52, 0.2))',
+                    borderColor: 'rgba(189, 145, 90, 0.3)',
+                    boxShadow: '0 10px 15px -3px rgba(189, 145, 90, 0.1)'
+                  } : {}}
+                  onMouseEnter={(e) => activeSection !== item.label.replace('#', '') && (e.target.style.backgroundColor = 'rgba(124, 108, 91, 0.5)')}
+                  onMouseLeave={(e) => activeSection !== item.label.replace('#', '') && (e.target.style.backgroundColor = 'transparent')}
+                >
+                  {t(item.label)}
+                  {activeSection === item.label.replace('#', '') && (
+                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full" style={{backgroundColor: '#bd915a'}}></div>
+                  )}
+                </a>
+              )
             ))}
           </div>
 

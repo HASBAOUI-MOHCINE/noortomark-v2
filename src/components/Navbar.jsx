@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { useTheme } from '../hooks/useTheme.js';
 import { translations } from '../data/translations.js';
 import { FaSun, FaMoon, FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import logo from '../logo/logo.jpeg';
 
 const Navbar = () => {
@@ -14,6 +14,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
   useEffect(() => {
@@ -45,13 +46,54 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome, location.pathname]);
 
+  // Handle hash scrolling
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  const handleNavigation = (e, href) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    if (href === '/services') {
+      navigate('/services');
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    // Handle anchor links
+    const targetId = href.replace('/#', '').replace('#', '');
+    
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const t = (key) => translations[language][key] || key;
 
   const navItems = [
-    { href: isHome ? '#home' : '/#home', label: 'home' },
-    { href: isHome ? '#about' : '/#about', label: 'about' },
-    { href: isHome ? '#services' : '/services', label: 'services' },
-    { href: isHome ? '#contact' : '/#contact', label: 'contact' },
+    { href: '#home', label: 'home' },
+    { href: '#about', label: 'about' },
+    { href: '/services', label: 'services' },
+    { href: '#contact', label: 'contact' },
   ];
 
   return (
@@ -84,7 +126,8 @@ const Navbar = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
+                  onClick={(e) => handleNavigation(e, item.href)}
+                  className={`relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 cursor-pointer ${
                     activeSection === item.label.replace('#', '')
                       ? 'text-white border shadow-lg'
                       : 'text-stone-300 hover:text-white'
@@ -181,8 +224,8 @@ const Navbar = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-300 ${
+                    onClick={(e) => handleNavigation(e, item.href)}
+                    className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-300 cursor-pointer ${
                       activeSection === item.label.replace('#', '')
                         ? 'text-white border shadow-lg'
                         : 'text-stone-300 hover:text-white'

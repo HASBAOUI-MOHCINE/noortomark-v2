@@ -3,13 +3,18 @@ import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../data/translations';
 import { services } from '../data/services.js';
-import { FaArrowRight, FaCheck, FaStar, FaRocket } from 'react-icons/fa';
+import { FaArrowRight, FaCheck, FaStar, FaRocket, FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { language } = useLanguage();
   const t = (key) => translations[language][key] || key;
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [activeAccordion, setActiveAccordion] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
 
   return (
     <section id="services" className="relative py-20 lg:py-28 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden">
@@ -61,23 +66,45 @@ const Services = () => {
               }`}></div>
               
               {/* Card Number Badge */}
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-stone-500 to-stone-700 rounded-2xl flex items-center justify-center shadow-xl shadow-stone-500/30 group-hover:scale-110 transition-transform duration-300">
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-stone-500 to-stone-700 rounded-2xl flex items-center justify-center shadow-xl shadow-stone-500/30 group-hover:scale-110 transition-transform duration-300 z-10">
                 <span className="text-white text-lg font-bold">0{index + 1}</span>
               </div>
 
-              {/* Service Icon */}
-              <div className="relative mb-8">
-                <div className="inline-flex p-5 lg:p-6 bg-gradient-to-br from-stone-700/80 to-stone-800/80 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-stone-900/50">
-                  <service.icon className="w-12 h-12 sm:w-14 sm:h-14 text-stone-300 group-hover:text-stone-100 transition-colors duration-300" />
+              {/* Mobile Accordion Header / Desktop Top Section */}
+              <div 
+                className="relative z-20 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start gap-4 md:gap-0 cursor-pointer md:cursor-default"
+                onClick={() => toggleAccordion(index)}
+              >
+                {/* Service Icon */}
+                <div className="relative md:mb-8">
+                  <div className="inline-flex p-4 md:p-5 lg:p-6 bg-gradient-to-br from-stone-700/80 to-stone-800/80 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-stone-900/50">
+                    <service.icon className="w-8 h-8 md:w-12 md:h-12 sm:w-14 sm:h-14 text-stone-300 group-hover:text-stone-100 transition-colors duration-300" />
+                  </div>
+                  {/* Animated Ring */}
+                  <div className="absolute -top-2 -right-2 w-6 h-6 md:w-8 md:h-8 border-2 border-stone-500/50 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></div>
                 </div>
-                {/* Animated Ring */}
-                <div className="absolute -top-2 -right-2 w-8 h-8 border-2 border-stone-500/50 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></div>
+
+                {/* Title - Visible here on mobile */}
+                <div className="flex-1 md:w-full md:hidden">
+                  <h3 className="text-xl font-bold text-white group-hover:text-stone-300 transition-colors duration-300">
+                    {t(service.title)}
+                  </h3>
+                </div>
+
+                {/* Chevron - Mobile Only */}
+                <div className="md:hidden text-stone-400">
+                  <FaChevronDown className={`transform transition-transform duration-300 ${activeAccordion === index ? 'rotate-180' : ''}`} />
+                </div>
               </div>
 
-              {/* Service Content */}
-              <div className="relative space-y-6">
+              {/* Service Content - Collapsible on Mobile */}
+              <div className={`
+                relative space-y-6 overflow-hidden transition-all duration-500 ease-in-out
+                ${activeAccordion === index ? 'max-h-[1000px] opacity-100 mt-6' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100 md:mt-0'}
+              `}>
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-stone-300 transition-colors duration-300">
+                  {/* Desktop Title */}
+                  <h3 className="hidden md:block text-2xl sm:text-3xl font-bold text-white mb-3 group-hover:text-stone-300 transition-colors duration-300">
                     {t(service.title)}
                   </h3>
                   
